@@ -43,9 +43,29 @@ public class CustomerDaoImpl implements CustomerDAO {
 	public void deleteCustomer(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query query = session.createQuery("DELETE FROM Customer WHERE id=:customerId");
+		Query<Customer> query = session.createQuery("DELETE FROM Customer WHERE id=:customerId");
 		query.setParameter("customerId", id);
 		query.executeUpdate();
+	}
+
+	@Override
+	public List<Customer> searchCustomers(String searchTerm) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Query<Customer> query;
+		/* If the search term is empty or null retrieve all names*/
+		if (searchTerm.trim().isEmpty() || searchTerm == null) {
+			query = session.createQuery("FROM Customer order by lastName");
+			
+		}
+		
+		/* Retrieve customers whose first name, last name, or email start with the string */
+		else {
+			query = session.createQuery("FROM Customer WHERE LOWER(firstName) LIKE :searchTerm OR LOWER(lastName) LIKE :searchTerm OR LOWER(email) LIKE :searchTerm ORDER BY lastName", Customer.class);
+			query.setParameter("searchTerm", searchTerm + "%");
+		}
+		
+		return query.getResultList();
 	}
 
 }
