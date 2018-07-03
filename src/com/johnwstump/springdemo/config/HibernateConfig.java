@@ -26,8 +26,8 @@ public class HibernateConfig {
 
 	private final String DBUSERVAR = "CustomerTrackerDBUser";
 	private final String DBPASSWORDVAR = "CustomerTrackerDBPassword";
-	@Bean
 	
+	@Bean
 	public DataSource dataSource() {
 		ComboPooledDataSource source = new ComboPooledDataSource();
 		try {
