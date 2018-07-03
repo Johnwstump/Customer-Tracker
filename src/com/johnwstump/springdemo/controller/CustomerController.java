@@ -21,11 +21,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@RequestMapping("/")
-	public String homePage() {
-		return "list-customers";
-	}
-	
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
 		List<Customer> customers = customerService.getCustomers();

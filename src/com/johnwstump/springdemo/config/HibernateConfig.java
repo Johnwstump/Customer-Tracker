@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
+@ComponentScan(basePackages="com.johnwstump")
 @EnableTransactionManagement
 public class HibernateConfig {
 
