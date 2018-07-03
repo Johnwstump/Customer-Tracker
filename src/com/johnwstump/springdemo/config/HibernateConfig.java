@@ -1,6 +1,7 @@
 package com.johnwstump.springdemo.config;
 
 import java.beans.PropertyVetoException;
+import java.util.Optional;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
@@ -23,16 +24,21 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @EnableTransactionManagement
 public class HibernateConfig {
 
+	private final String DBUSERVAR = "CustomerTrackerDBUser";
+	private final String DBPASSWORDVAR = "CustomerTrackerDBPassword";
 	@Bean
+	
 	public DataSource dataSource() {
 		ComboPooledDataSource source = new ComboPooledDataSource();
 		try {
 			source.setDriverClass("com.mysql.cj.jdbc.Driver");
 			//TODO Replace with Environment Variables
 			source.setJdbcUrl("jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false");
-			source.setUser("springstudent");
-			source.setPassword("springstudent");
-		} catch (PropertyVetoException e) {
+			String username = Optional.ofNullable(System.getenv(DBUSERVAR)).orElseThrow(() -> new Exception(DBUSERVAR + " is not set in the environment"));
+			source.setUser(username);
+			String password = Optional.ofNullable(System.getenv(DBPASSWORDVAR)).orElseThrow(() -> new Exception(DBPASSWORDVAR + " is not set in the environment"));
+			source.setPassword(password);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
