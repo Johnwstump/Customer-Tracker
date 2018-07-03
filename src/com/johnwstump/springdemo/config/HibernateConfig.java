@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,17 +23,19 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @ComponentScan(basePackages="com.johnwstump")
 @EnableTransactionManagement
+@DependsOn(value="springConfig")
 public class HibernateConfig {
 
-	private final String DBUSERVAR = "CustomerTrackerDBUser";
-	private final String DBPASSWORDVAR = "CustomerTrackerDBPassword";
+	@Value("${db.usernameVariable:customerTrackerDBUsername}")
+	private String DBUSERVAR;
+	@Value("${db.passwordVariable:customerTrackerDBPassword}")
+	private String DBPASSWORDVAR;
 	
 	@Bean
 	public DataSource dataSource() {
 		ComboPooledDataSource source = new ComboPooledDataSource();
 		try {
 			source.setDriverClass("com.mysql.cj.jdbc.Driver");
-			//TODO Replace with Environment Variables
 			source.setJdbcUrl("jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false");
 			String username = Optional.ofNullable(System.getenv(DBUSERVAR)).orElseThrow(() -> new Exception(DBUSERVAR + " is not set in the environment"));
 			source.setUser(username);

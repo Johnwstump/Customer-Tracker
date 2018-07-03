@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.sql.*;
 import java.util.Optional;
 
@@ -18,8 +20,10 @@ import java.util.Optional;
 @WebServlet("/TestDbServlet")
 public class TestDbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String DBUSERVAR = "CustomerTrackerDBUser";
-	private final String DBPASSWORDVAR = "CustomerTrackerDBPassword";
+	@Value("${db.usernameVariable:customerTrackerDBUsername}")
+	private String DBUSERVAR;
+	@Value("${db.passwordVariable:customerTrackerDBPassword}")
+	private String DBPASSWORDVAR;
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
