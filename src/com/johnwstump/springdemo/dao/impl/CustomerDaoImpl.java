@@ -43,7 +43,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 	public void deleteCustomer(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query<Customer> query = session.createQuery("DELETE FROM Customer WHERE id=:customerId");
+		Query<Customer> query = session.createQuery("DELETE FROM Customer WHERE id=:customerId", Customer.class);
 		query.setParameter("customerId", id);
 		query.executeUpdate();
 	}
@@ -55,7 +55,7 @@ public class CustomerDaoImpl implements CustomerDAO {
 		Query<Customer> query;
 		/* If the search term is empty or null retrieve all names*/
 		if (searchTerm.trim().isEmpty() || searchTerm == null) {
-			query = session.createQuery("FROM Customer order by lastName");
+			query = session.createQuery("FROM Customer order by lastName", Customer.class);
 			
 		}
 		
