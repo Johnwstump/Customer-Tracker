@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.rest;
+package com.johnwstump.webcustomertracker.rest;
 
 public class CustomerErrorResponse {
 

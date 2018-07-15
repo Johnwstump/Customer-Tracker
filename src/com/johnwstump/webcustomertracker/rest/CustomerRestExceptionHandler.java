@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.rest;
+package com.johnwstump.webcustomertracker.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

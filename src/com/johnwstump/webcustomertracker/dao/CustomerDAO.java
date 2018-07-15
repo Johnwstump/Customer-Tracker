@@ -1,8 +1,8 @@
-package com.johnwstump.springdemo.dao;
+package com.johnwstump.webcustomertracker.dao;
 
 import java.util.List;
 
-import com.johnwstump.springdemo.entity.Customer;
+import com.johnwstump.webcustomertracker.entity.Customer;
 
 public interface CustomerDAO {
 

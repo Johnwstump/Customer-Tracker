@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.config;
+package com.johnwstump.webcustomertracker.config;
 
 import java.beans.PropertyVetoException;
 import java.util.Optional;
@@ -57,7 +57,7 @@ public class HibernateConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan("com.johnwstump.springdemo.entity");
+		sessionFactory.setPackagesToScan("com.johnwstump.webcustomertracker.entity");
 		sessionFactory.setHibernateProperties(getHibernateProperties());
 		return sessionFactory;
 	}

@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.rest;
+package com.johnwstump.webcustomertracker.rest;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.johnwstump.springdemo.entity.Customer;
-import com.johnwstump.springdemo.service.CustomerService;
+import com.johnwstump.webcustomertracker.entity.Customer;
+import com.johnwstump.webcustomertracker.service.CustomerService;
 
 @RestController
 @RequestMapping("/api")

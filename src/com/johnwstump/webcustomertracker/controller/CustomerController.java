@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.controller;
+package com.johnwstump.webcustomertracker.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.johnwstump.springdemo.entity.Customer;
-import com.johnwstump.springdemo.service.CustomerService;
+import com.johnwstump.webcustomertracker.entity.Customer;
+import com.johnwstump.webcustomertracker.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")

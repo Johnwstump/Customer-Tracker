@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.dao.impl;
+package com.johnwstump.webcustomertracker.dao.impl;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.johnwstump.springdemo.dao.CustomerDAO;
-import com.johnwstump.springdemo.entity.Customer;
+import com.johnwstump.webcustomertracker.dao.CustomerDAO;
+import com.johnwstump.webcustomertracker.entity.Customer;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDAO {

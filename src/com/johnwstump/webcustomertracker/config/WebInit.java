@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.config;
+package com.johnwstump.webcustomertracker.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.SpringServletContainerInitializer;
 

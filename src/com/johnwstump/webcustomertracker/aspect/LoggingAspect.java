@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.aspect;
+package com.johnwstump.webcustomertracker.aspect;
 
 import java.util.logging.Logger;
 
@@ -14,7 +14,7 @@ public class LoggingAspect {
 
 	Logger logger = Logger.getLogger(getClass().getName());
 	
-	@Before("com.johnwstump.springdemo.aspect.PointcutDeclarations.isLoggable()")
+	@Before("com.johnwstump.webcustomertracker.aspect.PointcutDeclarations.isLoggable()")
 	public void logCall(JoinPoint joinPoint) {
 		logger.info("Logging method call: " + joinPoint.getSignature().toShortString());
 		
@@ -25,7 +25,7 @@ public class LoggingAspect {
 		}
 	}
 	
-	@AfterReturning(pointcut="com.johnwstump.springdemo.aspect.PointcutDeclarations.isLoggable()", returning="result")
+	@AfterReturning(pointcut="com.johnwstump.webcustomertracker.aspect.PointcutDeclarations.isLoggable()", returning="result")
 	public void logCall(JoinPoint joinPoint, Object result) {
 		logger.info("Logging method Return: " + joinPoint.getSignature().toShortString());
 		logger.info("===> return: " + result);

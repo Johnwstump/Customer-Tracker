@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.config;
+package com.johnwstump.webcustomertracker.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

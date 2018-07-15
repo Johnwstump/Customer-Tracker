@@ -1,4 +1,4 @@
-package com.johnwstump.springdemo.entity;
+package com.johnwstump.webcustomertracker.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

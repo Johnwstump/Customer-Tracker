@@ -1,8 +1,8 @@
-package com.johnwstump.springdemo.service;
+package com.johnwstump.webcustomertracker.service;
 
 import java.util.List;
 
-import com.johnwstump.springdemo.entity.Customer;
+import com.johnwstump.webcustomertracker.entity.Customer;
 
 public interface CustomerService {
 
