@@ -1,10 +1,8 @@
 package com.johnwstump.webcustomertracker.config;
 
-import java.beans.PropertyVetoException;
 import java.util.Optional;
 import java.util.Properties;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
@@ -14,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -30,6 +29,9 @@ public class HibernateConfig {
 	private String DBUSERVAR;
 	@Value("${db.passwordVariable:customerTrackerDBPassword}")
 	private String DBPASSWORDVAR;
+	
+	@Autowired
+	private Environment env;
 	
 	@Bean
 	public DataSource dataSource() {
@@ -51,6 +53,27 @@ public class HibernateConfig {
 		source.setMaxPoolSize(20);
 		source.setMaxIdleTime(30000);
 		return source;
+	}
+	
+	@Bean(name="securityDataSource")
+	public DataSource securityDataSource(){
+		System.out.println("Building Security Source");
+		ComboPooledDataSource securitySource = new ComboPooledDataSource();
+		try {
+			securitySource.setDriverClass(env.getProperty("security.jdbc.driver"));
+			securitySource.setJdbcUrl(env.getProperty("security.jdbc.url"));
+			securitySource.setUser(env.getProperty("security.jdbc.user"));
+			securitySource.setPassword(env.getProperty("security.jdbc.password"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		/* Connection Pool properties */
+		securitySource.setInitialPoolSize(5);
+		securitySource.setMinPoolSize(5);
+		securitySource.setMaxPoolSize(20);
+		securitySource.setMaxIdleTime(30000);
+		return securitySource;
 	}
 	
 	@Bean

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @ComponentScan(basePackages="com.johnwstump")
 @EnableAspectJAutoProxy
-@PropertySource("classpath:db.properties")
+@PropertySource({"classpath:db.properties", "classpath:security-persistence-mysql.properties"})
 @Configuration("springConfig")
 public class SpringConfig {
 
